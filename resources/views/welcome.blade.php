@@ -72,13 +72,13 @@
 
         }
 
-        .imge {
-            /* background-image: url({{asset("/images/Land1.jpeg")}}); */
-            background-image: url('../images/Land2.jpg') !important;
+        /* .imge { */
+        /* background-image: url({{asset("/images/Land1.jpeg")}}); */
+        /* background-image: url('../images/Land2.jpg') !important;
             width: 40%;
             height: 300px;
-            background-repeat: no-repeat;
-        }
+            background-repeat: no-repeat; */
+        /* } */
     </style>
 </head>
 
@@ -98,13 +98,22 @@
             @endauth
         </div>
         @endif
-        <div >
-                <h1>Your Support</h1><br/>
-                <h1>is POWERFUl.</h1>
+        <div>
+            <h1>Your Support</h1><br />
+            <h1>is POWERFUl.</h1>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3 imge"></div>
+        <!-- <div class="col-md-3 imge"></div> -->
+        <div class="col-md-3"></div>
+        <div class="col-md-7">
+            <div class="card" style="width: 18rem;">
+
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 

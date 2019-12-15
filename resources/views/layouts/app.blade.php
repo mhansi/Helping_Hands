@@ -61,13 +61,13 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-                                <a class="dropdown-item" >
-                                   Get Help
+                                <a class="dropdown-item">
+                                    Get Help
                                 </a>
-                                 <a class="dropdown-item" >
-                                     Do Help
-                                 </a>
-                                   
+                                <a class="dropdown-item">
+                                    Do Help
+                                </a>
+
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
