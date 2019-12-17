@@ -14,14 +14,16 @@
             </div>
         </div>
         <div class="col-md-5">
+            @foreach($posts as $post)
             <div class="card" style="width: 18rem;">
-                <img src="../images/Land2.jpg" class="card-img-top" alt="...">
+                <img src="../storage/{{$post->image}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="card-text">{{ $post->post }}</p>
                 </div>
             </div>
+            @endforeach
         </div>
-        <div class="col-md-4">
+        <div class=" col-md-4">
             <!-- <div class="card">
              
 
@@ -35,21 +37,25 @@
                   
 
                 </div> -->
-            <form>
+            <form action="/storePost" method="POST" enctype="multipart/form-data">
+                {{ csrf_field() }}
                 <div class="form-group">
-                    <textarea class="form-control" placeholder="Write your post here"></textarea>
+                    <input type="text" class="form-control" name="title" placeholder="Write your title here">
                 </div>
                 <div class="form-group">
-                    <input class="form-control-file" type="file">
+                    <textarea class="form-control" name="post" placeholder="Write your post here"></textarea>
+                </div>
+                <div class="form-group">
+                    <input class="form-control-file" name="image" type="file">
                 </div>
                 <div class="form-group">
                     <label>Type:</label>
-                    <select>
+                    <select name="type">
                         <option value="getHelp">Get help</option>
                         <option value="doHelp">Do help</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label>Category:</label>
                     <div class="checkbox">
                         <label><input type="checkbox" value="">Kidney</label>
@@ -60,7 +66,7 @@
                     <div class="checkbox">
                         <label><input type="checkbox" value="">Eyes</label>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary mb-2">Submit</button>
