@@ -23,7 +23,7 @@
                     <p class="card-text">{{ $post->post }}</p>
                 </div>
             </div>
-</br>
+            </br>
             @endforeach
         </div>
         <div class=" col-md-4">
@@ -48,6 +48,7 @@
                 <div class="form-group">
                     <textarea class="form-control" name="post" placeholder="Write your post here"></textarea>
                 </div>
+
                 <div class="form-group">
                     <input class="form-control-file" name="image" type="file">
                 </div>

@@ -61,10 +61,10 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-                                <a class="dropdown-item">
+                                <a href="{{ route('getHelp') }}" method="GET" class="dropdown-item">
                                     Get Help
                                 </a>
-                                <a class="dropdown-item">
+                                <a href="{{ route('doHelp') }}" method="GET" class="dropdown-item">
                                     Do Help
                                 </a>
 

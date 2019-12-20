@@ -16,6 +16,8 @@ class postController extends Controller
 {
     public function store(Request $request)
     {
+        
+
         $post = new Post;
         $userId=Auth::user()->id;
 
@@ -27,16 +29,36 @@ class postController extends Controller
         $post->user=$userId;
         $post->title = $request['title'];
         $post->post = $request['post'];
+       
         $post->image = $imageName;
         $post->type = $request['type'];
+        
 
        $post->save();
-       $data=Post::all();
-         return view('home')->with('posts', $data);
+       $data=Post::orderBy('updated_at', 'desc')->get();
+         return redirect('home')->with('posts', $data);
     }
     public function show(){
-        $data = Post::all();
+        $data = Post::orderBy('updated_at', 'desc')->get();
+       
         return view('home')->with('posts', $data);
     }
- 
+    
+    public function viewGetHelp(){
+        return view('getHelp');
+    }
+    public function viewDoHelp()
+    {
+        return view('doHelp');
+    }
+    public function showGetHelp()
+    {
+        $data = Post::orderBy('updated_at', 'desc')->get();
+        return view('getHelp')->with('posts', $data);
+    }
+    public function showDoHelp()
+    {
+        $data = Post::orderBy('updated_at', 'desc')->get();
+        return view('doHelp')->with('posts', $data);
+    }
 }

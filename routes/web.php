@@ -20,6 +20,7 @@ Auth::routes(['verify'=>true]);
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 Route::post('/storePost','postController@store');
 Route::get('/home', 'postController@show');
-Route::get('/getHelp', function () {
-    return view('getHelp');
-});
+Route::get('/getHelp', 'postController@viewGetHelp')->name('getHelp');
+Route::get('/doHelp', 'postController@viewDoHelp')->name('doHelp');
+Route::get('/getHelp', 'postController@showGetHelp')->name('getHelp');
+Route::get('/doHelp', 'postController@showDoHelp')->name('doHelp');

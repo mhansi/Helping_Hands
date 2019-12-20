@@ -13,10 +13,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-9">
             @foreach($posts as $post)
-            @if('doHelp'==$post->type)
-            <div class="card" style="width: 18rem;">
+            @if('getHelp'==$post->type)
+            <div class="card align-middle" style="width: 70%; ;">
                 <img src="{{ Storage::disk('local')->url($post->image)}}" class="card-img-top">
 
                 <div class="card-body">
@@ -28,7 +28,7 @@
             @endif
             @endforeach
         </div>
-       
+
     </div>
 </div>
 
