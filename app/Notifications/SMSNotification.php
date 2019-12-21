@@ -29,7 +29,7 @@ class SMSNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['nexmo'];
+        return ['email'];
     }
 
     /**

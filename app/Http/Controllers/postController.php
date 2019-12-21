@@ -39,10 +39,12 @@ class postController extends Controller
          return redirect('home')->with('posts', $data);
     }
     public function show(){
+      
         $data = Post::orderBy('updated_at', 'desc')->get();
        
         return view('home')->with('posts', $data);
     }
+   
     
     public function viewGetHelp(){
         return view('getHelp');

@@ -17,6 +17,11 @@
             @foreach($posts as $post)
             @if('doHelp'==$post->type)
             <div class="card" style="width: 18rem;">
+
+                <div class="info ">
+                    Posted  on {{$post->created_at}}
+                </div>
+
                 <img src="{{ Storage::disk('local')->url($post->image)}}" class="card-img-top">
 
                 <div class="card-body">
@@ -28,7 +33,7 @@
             @endif
             @endforeach
         </div>
-       
+
     </div>
 </div>
 

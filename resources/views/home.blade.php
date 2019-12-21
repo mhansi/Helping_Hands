@@ -15,6 +15,9 @@
         </div>
         <div class="col-md-5">
             @foreach($posts as $post)
+
+            @if(Auth::id()==$post->user)
+
             <div class="card" style="width: 18rem;">
                 <img src="{{ Storage::disk('local')->url($post->image)}}" class="card-img-top">
 
@@ -24,6 +27,7 @@
                 </div>
             </div>
             </br>
+            @endif
             @endforeach
         </div>
         <div class=" col-md-4">
