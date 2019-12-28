@@ -38,12 +38,6 @@ class postController extends Controller
        $data=Post::orderBy('updated_at', 'desc')->get();
          return redirect('home')->with('posts', $data);
     }
-    public function show(){
-      
-        $data = Post::orderBy('updated_at', 'desc')->get();
-       
-        return view('home')->with('posts', $data);
-    }
    
     
     public function viewGetHelp(){
@@ -63,4 +57,19 @@ class postController extends Controller
         $data = Post::orderBy('updated_at', 'desc')->get();
         return view('doHelp')->with('posts', $data);
     }
+    public function viewUser($user){
+        $data = User::findOrFail($user);
+       
+         return view('viewUser')->with('userDetails',$data);
+     
+       
+    }
+    public function deletePost($postId){
+      $post=Post::find($postId);
+      $post->delete();
+
+        return redirect('home');
+    }
+   
+    
 }

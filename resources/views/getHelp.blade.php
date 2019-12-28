@@ -19,7 +19,7 @@
             <div class="card" style="width: 18rem;">
 
                 <div class="info ">
-                    Posted  on {{$post->created_at}}
+                    Posted by <a href="home/viewUser/{{$post->user}}">{{$post->userr['name']}}</a> on {{$post->created_at}}
                 </div>
 
                 <img src="{{ Storage::disk('local')->url($post->image)}}" class="card-img-top">

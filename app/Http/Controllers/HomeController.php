@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use App\Message;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $data1 = Post::orderBy('updated_at', 'desc')
+            ->get();
+
+        //    $data = Post::with('users')::orderBy('updated_at', 'desc')
+        //          ->get();
+
+          $data2 = Message::orderBy('updated_at', 'desc')->get();
+        
+        return view('home')->with('posts', $data1)->with('messages', $data2);
     }
+    public function viewMessage($id)
+    {
+        $view = 'yes';
+       
+        $message = Message::find($id);
+        $message->view = $view;
+        $message->save();
+        return redirect('home');
+     }
 }

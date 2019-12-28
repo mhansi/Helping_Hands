@@ -25,6 +25,8 @@
                     <h5 class="card-title">{{ $post->title }}</h5>
                     <p class="card-text">{{ $post->post }}</p>
                 </div>
+                <a href="#">edit</a>
+                <a href="/delete/{{$post->id}}">Delete</a>
             </div>
             </br>
             @endif
@@ -84,11 +86,41 @@
 
             </form>
 
+            <div class="dropdown">
 
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Messages
+                </button>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    @foreach($messages as $message)
+                    @if(Auth::id()==$message->receiver_id)
+                    @if($message->view=='no')
+                    <a class="dropdown-item " style="background-color:red" href="/viewMessage/{{$message->id}}">
+
+                        <a href='#'>{{$message->id}}</a>
+                        <p>{{$message->message}}</p>
+                    </a>
+                    @endif
+                    @if($message->view=='yes')
+                    <a class="dropdown-item " href="/viewMessage">
+                        <input type="hidden" value={{$message->id}}>
+                        <p>{{$message->message}}</p>
+                    </a>
+                    @endif
+
+                    @endif
+                    @endforeach
+                </div>
+
+            </div>
 
         </div>
     </div>
 </div>
+
+
+
 
 </div>
 
