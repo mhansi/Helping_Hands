@@ -59,8 +59,11 @@ class postController extends Controller
     }
     public function viewUser($user){
         $data = User::findOrFail($user);
+       $data2 = Post::orderBy('updated_at', 'desc')->where('user', $user)->get();
+            return view('viewUser')->with('userDetails', $data)->with('posts',$data2);
        
-         return view('viewUser')->with('userDetails',$data);
+       
+       
      
        
     }

@@ -31,6 +31,6 @@ Route::get('/edit/{postId}', 'postController@editPost');
 Route::post('/resubmit', 'postController@resubmit');
 Route::get('/viewMessages/{messageId}','postController@viewMessagePanel');
 Route::get('/userAccount','HomeController@userAccount');
-
+Route::post('/updateUserAccount', 'HomeController@updateUserAccount');
 
 

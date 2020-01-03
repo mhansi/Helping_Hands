@@ -8,3 +8,10 @@
      max-height: 450px;
      overflow-x: hidden;
 }
+.profile{
+    padding:2%;
+   margin:auto;
+  
+  
+    align-items: center;
+}

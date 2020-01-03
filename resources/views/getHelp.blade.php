@@ -2,21 +2,10 @@
 
 @section('content')
 <div class="container">
-    <div class="row ">
-        <div class="col-md-3">
-            <div class="profile">
-                <div>
-                    <img src="../images/Land2.jpg " class="img" style="width:45%" alt="...">
-                </div>
-                <div>
-                    <h4>My name</h4>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-5">
+    
             @foreach($posts as $post)
             @if('doHelp'==$post->type)
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 25rem;">
 
                 <div class="info ">
                     Posted by <a href="home/viewUser/{{$post->user}}">{{$post->userr['name']}}</a> on {{$post->created_at}}
@@ -32,10 +21,8 @@
             </br>
             @endif
             @endforeach
-        </div>
+       
 
-    </div>
-</div>
 
 </div>
 

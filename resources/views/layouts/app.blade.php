@@ -26,9 +26,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -52,28 +51,43 @@
                         </li>
                         @endif
                         @else
+
+                        <a href="{{ route('getHelp') }}" method="GET" class="dropdown-item">
+                            Get Help
+                        </a>
+                        <a href="{{ route('doHelp') }}" method="GET" class="dropdown-item">
+                            Do Help
+                        </a>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                Logout <span class="caret"></span>
                             </a>
+
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-                                <a href="{{ route('getHelp') }}" method="GET" class="dropdown-item">
-                                    Get Help
-                                </a>
-                                <a href="{{ route('doHelp') }}" method="GET" class="dropdown-item">
-                                    Do Help
-                                </a>
+                                <div>
+                                    <a href="/userAccount" class="dropdown-item">Upadate Account</a>
+                                </div>
 
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
                             </div>
+                        </li>
+                        <li>@if(Auth::user()->image!='')
+                            <div class="card" style="width: 2rem;">
+                                <img src="{{ Storage::disk('local')->url(Auth::user()->image)}}" class="card-img-top ">
+                            </div>
+                            @endif</li>
+                        <li>
+                            <a class="navbar-brand" href="{{ url('/home') }}">
+                                {{Auth::user()->name}}
+                            </a>
                         </li>
                         @endguest
                     </ul>
