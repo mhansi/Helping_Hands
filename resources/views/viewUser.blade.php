@@ -24,7 +24,7 @@
         {{ csrf_field() }}
         <div class="form-group">
 
-            <input type="hidden" class="form-control" name="name" placeholder="{{Auth::user()->name}}">
+            <input type="hidden" class="form-control" name="name" value={{Auth::user()->name}}>
         </div>
         <div class="form-group">
 

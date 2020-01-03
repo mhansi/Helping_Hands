@@ -27,4 +27,10 @@ Route::get('/doHelp', 'postController@showDoHelp')->name('doHelp');
 Route::get('/home/viewUser/{user}', 'postController@viewUser');
 Route::get('/delete/{postId}', 'postController@deletePost');
 Route::post('/sendEmail', 'sendEmailController@send');
+Route::get('/edit/{postId}', 'postController@editPost');
+Route::post('/resubmit', 'postController@resubmit');
+Route::get('/viewMessages/{messageId}','postController@viewMessagePanel');
+Route::get('/userAccount','HomeController@userAccount');
+
+
 

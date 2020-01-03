@@ -9,7 +9,7 @@
                     <img src="../images/Land2.jpg " class="img" style="width:45%" alt="...">
                 </div>
                 <div>
-                    <h4>My name</h4>
+                    <a href="/userAccount">My name</a>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
                     <h5 class="card-title">{{ $post->title }}</h5>
                     <p class="card-text">{{ $post->post }}</p>
                 </div>
-                <a href="#">edit</a>
+                <a href="/edit/{{$post->id}}">edit</a>
                 <a href="/delete/{{$post->id}}">Delete</a>
             </div>
             </br>
@@ -92,18 +92,18 @@
                     Messages
                 </button>
 
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButton">
                     @foreach($messages as $message)
                     @if(Auth::id()==$message->receiver_id)
                     @if($message->view=='no')
                     <a class="dropdown-item " style="background-color:red" href="/viewMessage/{{$message->id}}">
 
-                        <a href='#'>{{$message->id}}</a>
+                        <!-- <a href='#'>{{$message->id}}</a> -->
                         <p>{{$message->message}}</p>
                     </a>
                     @endif
                     @if($message->view=='yes')
-                    <a class="dropdown-item " href="/viewMessage">
+                    <a class="dropdown-item " href="/viewMessages/{{$message->id}}">
                         <input type="hidden" value={{$message->id}}>
                         <p>{{$message->message}}</p>
                     </a>

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Message;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class HomeController extends Controller
 {
@@ -45,4 +48,9 @@ class HomeController extends Controller
         $message->save();
         return redirect('home');
      }
+     public function userAccount(){
+         return view('userAccount');
+     }
+    
+   
 }
