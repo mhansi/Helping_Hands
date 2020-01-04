@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" >
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
 
@@ -51,16 +51,17 @@
                         </li>
                         @endif
                         @else
+                        <li>@if(Auth::user()->image!='')
+                            <div class="card" style="width: 2rem;">
+                                <a href="{{ url('/home') }}">
+                                    <img src="{{ Storage::disk('local')->url(Auth::user()->image)}}" class="card-img-top ">
+                                </a>
+                            </div>
+                            @endif</li>
 
-                        <a href="{{ route('getHelp') }}" method="GET" class="dropdown-item">
-                            Get Help
-                        </a>
-                        <a href="{{ route('doHelp') }}" method="GET" class="dropdown-item">
-                            Do Help
-                        </a>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Logout <span class="caret"></span>
+                                {{Auth::user()->name}} <span class="caret"></span>
                             </a>
 
 
@@ -79,16 +80,17 @@
                                 </form>
                             </div>
                         </li>
-                        <li>@if(Auth::user()->image!='')
-                            <div class="card" style="width: 2rem;">
-                                <img src="{{ Storage::disk('local')->url(Auth::user()->image)}}" class="card-img-top ">
-                            </div>
-                            @endif</li>
                         <li>
-                            <a class="navbar-brand" href="{{ url('/home') }}">
-                                {{Auth::user()->name}}
+                            <a href="{{ route('getHelp') }}" class="nav-link" method="GET" class="dropdown-item">
+                                Get Help
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('doHelp') }}" class="nav-link" method="GET" class="dropdown-item">
+                                Do Help
+                            </a>
+                        </li>
+
                         @endguest
                     </ul>
                 </div>
@@ -96,7 +98,10 @@
         </nav>
 
         <main class="py-4">
+
             @yield('content')
+
+
         </main>
     </div>
 </body>

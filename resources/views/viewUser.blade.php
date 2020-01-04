@@ -63,7 +63,7 @@
 
 @foreach($posts as $post)
 @if($post->type=='doHelp')
-<div class="card" style="width: 25rem; background-color:#9ac288; ">
+<div class="card " style="width: 25rem; background-color:#9ac288; ">
     <img src="{{ Storage::disk('local')->url($post->image)}}" class="card-img-top">
     <div class="card-body">
         <h5 class="card-title">{{ $post->title }}</h5>
