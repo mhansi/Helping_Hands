@@ -51,6 +51,7 @@
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                         @endif
+                      
                         @else
                         <li>@if(Auth::user()->image!='')
                             <div class="card" style="width: 2rem;">

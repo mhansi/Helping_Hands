@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
+<div class="container">
+    <h5>Need to make smile someone</h5>
+
 
     <!-- @foreach($posts as $post)
     @if('getHelp'==$post->type)
@@ -19,7 +21,7 @@
     </br>
     @endif
     @endforeach -->
-    <div class="row">
+    <!--  <div class="row">
         <div class="col-md-4 mx-auto">
             <div class="card mx-auto " style="background-color: rgba(0,0,0,0); border:none; position: fixed;">
                 <div class="card-title">
@@ -46,9 +48,9 @@
 
                         <div class="form-group">
                             <input class="form-control-file" name="image" type="file">
-                        </div>
+                        </div> -->
 
-                        <!-- <div class="form-group">
+    <!-- <div class="form-group">
                     <label>Category:</label>
                     <div class="checkbox">
                         <label><input type="checkbox" value="">Kidney</label>
@@ -60,43 +62,79 @@
                         <label><input type="checkbox" value="">Eyes</label>
                     </div>
                 </div> -->
-
+    <!-- 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary mb-2">Submit</button>
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
-        <div class="col-md-8 ">
-            <div class="row">
-                @foreach($posts->split($posts->count()/2) as $row)
-                <div class="col-md-6 col-sm-12 mx-auto" data-aos="fade-right" data-aos-duration="2000">
-                    @foreach($row as $post)
-                    @if('getHelp'==$post->type)
-                    <div class="card shadow-sm mx-auto post">
+        </div> -->
+    <div class="row">
+        @foreach($posts as $post)
 
-                        <div class="card-body">
-                            <div class="info ">
-                                Posted by <a href="home/viewUser/{{$post->user}}">{{$post->userr['name']}}</a> on {{$post->created_at}}
-                            </div>
-                            <div class="card mx-5 my-3">
-                                <img src="{{ Storage::disk('local')->url($post->image)}}" class="card-img-top">
-                            </div>
 
-                            <h5 class="card-title">{{ $post->title }}</h5>
-                            <p class="card-text">{{ $post->post }}</p>
-                        </div>
+        @if('getHelp'==$post->type)
+
+        <div class="col-md-4">
+            <div class="card shadow-sm mx-auto post">
+
+                <div class="card-body">
+                    <div class="info ">
+                        Posted on by <a href="/viewUser/{{$post->user}}">{{$post->userr['name']}}</a> {{$post->created_at}}
+
+                    </div>
+                    <div class="card mx-5 my-3">
+                        <img src="{{ Storage::disk('local')->url($post->image)}}" class="card-img-top">
                     </div>
 
-                    </br>
+                    <h5 class="card-title">{{ $post->title }}</h5>
+                    <p class="card-text">{{ $post->post }}</p>
+                    @if(Auth::id()!=$post->user)
+                    <a href="/reportPost" style="text-align:rigth;">Report</a>
                     @endif
-                    @endforeach
                 </div>
-                @endforeach
+
             </div>
+
+            </br>
         </div>
+        @endif
+
+
+
+        @endforeach
     </div>
+
+    <div class="row">
+        @foreach($posts->split($posts->count()/2) as $row)
+        <div class="col-md-6 col-sm-12 mx-auto" data-aos="fade-right" data-aos-duration="2000">
+            @foreach($row as $post)
+            @if('getHelp'==$post->type)
+            <div class="card shadow-sm mx-auto post">
+
+                <div class="card-body">
+                    <div class="info ">
+                        Posted by <a href="/viewUser/{{$post->user}}">{{$post->userr['name']}}</a> on {{$post->created_at}}
+                    </div>
+                    <div class="card mx-5 my-3">
+                        <img src="{{ Storage::disk('local')->url($post->image)}}" class="card-img-top">
+                    </div>
+
+                    <h5 class="card-title">{{ $post->title }}</h5>
+                    <p class="card-text">{{ $post->post }}</p>
+                </div>
+            </div>
+
+            </br>
+            @endif
+            @endforeach
+
+        </div>
+        @endforeach
+    </div>
+
+</div>
 
 
 

@@ -46,6 +46,10 @@
                         </div>
 
                     </div>
+                    @if(Auth::user()->email=='srsmsone@gmail.com')
+                    <a href="/admin">Admin</a>
+                    
+                    @endif
                 </div>
             </div>
         </div>
@@ -112,8 +116,8 @@
     </br>
     @endif
     @endforeach -->
-    
-        <!-- <div class="col-md-4 col-sm-4 mx-auto">
+
+    <!-- <div class="col-md-4 col-sm-4 mx-auto">
             <div class="card mx-auto " style="background-color: rgba(0,0,0,0); border:none; ">
                 <div class="card-title">
                     <h3 class="text-center my-2">Add your post</h3>
@@ -129,7 +133,7 @@
                             </select>
                         </div> -->
 
-                        <!-- <div class="form-group">
+    <!-- <div class="form-group">
                             <input type="text" class="form-control" name="title" placeholder="Write your title here">
                         </div>
 
@@ -141,7 +145,7 @@
                             <input class="form-control-file" name="image" type="file">
                         </div> -->
 
-                        <!-- <div class="form-group">
+    <!-- <div class="form-group">
                     <label>Category:</label>
                     <div class="checkbox">
                         <label><input type="checkbox" value="">Kidney</label>
@@ -154,7 +158,7 @@
                     </div>
                 </div> -->
 
-                        <!-- <div class="form-group">
+    <!-- <div class="form-group">
                             <button type="submit" class="btn btn-primary mb-2">Submit</button>
                         </div>
                     </form>
@@ -189,8 +193,51 @@
                 </div>
 
             </div> -->
-        
-       <div class="row">
+
+    <div class="col-md-12">
+        <div class="row">
+            @foreach($posts as $post)
+
+
+            @if($post->user==Auth::id())
+
+            <div class="col-md-6">
+                <div class="card shadow-sm mx-auto post">
+
+                    <div class="card-body">
+                        <div class="info ">
+                            Posted on {{$post->created_at}}
+                            @if($post->type=='doHelp')
+                            <p style="color:green">to Do Help</p>
+                            @endif
+                            @if($post->type=='getHelp')
+                            <p style="color:red">to Get Help</p>
+                            @endif
+                        </div>
+                        <div class="card mx-5 my-3">
+                            <img src="{{ Storage::disk('local')->url($post->image)}}" class="card-img-top">
+                        </div>
+
+                        <h5 class="card-title">{{ $post->title }}</h5>
+                        <p class="card-text">{{ $post->post }}</p>
+                    </div>
+                    <a href="/edit/{{$post->id}}">edit</a>
+                    <a href="/delete/{{$post->id}}">Delete</a>
+
+                </div>
+
+                </br>
+            </div>
+            @endif
+
+
+
+            @endforeach
+        </div>
+    </div>
+
+
+    <div class="row">
         <div class="col-md-12">
             @foreach($posts as $post)
 
@@ -228,8 +275,8 @@
             @endif
             @endforeach
         </div>
-</div>
-       
     </div>
 
-    @endsection
+</div>
+
+@endsection

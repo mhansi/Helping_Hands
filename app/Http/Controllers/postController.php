@@ -57,16 +57,15 @@ class postController extends Controller
         $data = Post::orderBy('updated_at', 'desc')->get();
         return view('doHelp')->with('posts', $data);
     }
-    public function viewUser($user){
-        $data = User::findOrFail($user);
-       $data2 = Post::orderBy('updated_at', 'desc')->where('user', $user)->get();
-            return view('viewUser')->with('userDetails', $data)->with('posts',$data2);
+    public function viewUser($user)
+    {
+         $data = User::findOrFail($user);
+        $data2 = Post::orderBy('updated_at', 'desc')->where('user', $user)->get();
+
+       return view('viewUser')->with('userDetails', $data)->with('posts',$data2);
        
-       
-       
-     
-       
-    }
+   }
+    
     public function deletePost($postId){
       $post=Post::find($postId);
       $post->delete();

@@ -15,22 +15,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['verify'=>true]);
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
-Route::post('/storePost','postController@store');
-Route::get('/viewMessage/{id}', 'HomeController@viewMessage');
-Route::get('/home/getHelp', 'postController@viewGetHelp')->name('getHelp');
-Route::get('/home/doHelp', 'postController@viewDoHelp')->name('doHelp');
-Route::get('/home/getHelp', 'postController@showGetHelp')->name('getHelp');
-Route::get('/home/doHelp', 'postController@showDoHelp')->name('doHelp');
-Route::get('/home/viewUser/{user}', 'postController@viewUser');
-Route::get('/delete/{postId}', 'postController@deletePost');
-Route::post('/sendEmail', 'sendEmailController@send');
-Route::get('/edit/{postId}', 'postController@editPost');
-Route::post('/resubmit', 'postController@resubmit');
-Route::get('/viewMessages/{messageId}','postController@viewMessagePanel');
-Route::get('/userAccount','HomeController@userAccount');
-Route::post('/updateUserAccount', 'HomeController@updateUserAccount');
-
+Route::post('/storePost', 'postController@store')->middleware('verified');
+Route::get('/viewMessage/{id}', 'HomeController@viewMessage')->middleware('verified');
+Route::get('/home/getHelp', 'postController@viewGetHelp')->name('getHelp')->middleware('verified');
+Route::get('/home/doHelp', 'postController@viewDoHelp')->name('doHelp')->middleware('verified');
+Route::get('/home/getHelp', 'postController@showGetHelp')->name('getHelp')->middleware('verified');
+Route::get('/home/doHelp', 'postController@showDoHelp')->name('doHelp')->middleware('verified');
+Route::get('/viewUser/{user}', 'postController@viewUser')->middleware('verified');
+Route::get('/delete/{postId}', 'postController@deletePost')->middleware('verified');
+Route::post('/sendEmail', 'sendEmailController@send')->middleware('verified');
+Route::get('/edit/{postId}', 'postController@editPost')->middleware('verified');
+Route::post('/resubmit', 'postController@resubmit')->middleware('verified');
+Route::get('/viewMessages/{messageId}', 'postController@viewMessagePanel')->middleware('verified');
+Route::get('/userAccount', 'HomeController@userAccount')->middleware('verified');
+Route::post('/updateUserAccount', 'HomeController@updateUserAccount')->middleware('verified');
+Route::get('/admin','HomeController@admin')->middleware('verified');
+Route::get('/users','HomeController@users')->middleware('verified');
 

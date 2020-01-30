@@ -53,6 +53,13 @@ class HomeController extends Controller
          return view('userAccount');
      }
      public function updateUserAccount(Request $request){
+        $this->validate($request, [
+            'name' => 'required|max:15',
+            'description'=>'required|max:100',
+            'image'=>'required'
+
+            ]);
+
         
         $userId = Auth::user()->id;
         $userDetails= User::find($userId);
@@ -70,6 +77,13 @@ class HomeController extends Controller
         
         return redirect('userAccount');
      }
-    
+    public function admin(){
+        $post = Post::orderBy('updated_at', 'desc')->get();
+        return view('admin')->with('posts',$post);
+    }
    
+    public function users(){
+        $users = User::all();
+        return view('users')->with('users',$users);
+    }
 }
