@@ -10,20 +10,17 @@
             <div class="form-group">
                 <input name="post" type='text'>
             </div>
-            <div class="form-group">
-                <span><button type="submit" class="btn btn-primary mb-2"><i class="fa fa-search"></i></button></span>
-            </div>
-            
+            <span><button type="submit" class="btn btn-primary mb-2"><i class="fa fa-search"></i></button></span>
+
         </div>
     </form>
     <span><button><a href="/users">Users</a></button></span>
     <br />
     <div class="row">
-        @foreach($posts as $post)
 
+        @if(isset($details))
 
-
-
+        @foreach($details as $post)
         <div class="col-md-4">
             <div class="card shadow-sm mx-auto post">
 
@@ -45,10 +42,9 @@
             </br>
         </div>
 
-
-
-
         @endforeach
+
+        @endif
     </div>
 </div>
 @endsection

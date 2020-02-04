@@ -34,4 +34,6 @@ Route::get('/userAccount', 'HomeController@userAccount')->middleware('verified')
 Route::post('/updateUserAccount', 'HomeController@updateUserAccount')->middleware('verified');
 Route::get('/admin','HomeController@admin')->middleware('verified');
 Route::get('/users','HomeController@users')->middleware('verified');
-
+Route::post('/searchedUsers' , 'HomeController@searchedUsers');
+Route::post('/searchedPosts', 'HomeController@serchedPosts');
+Route::get('/report/{id}','postController@report');

@@ -16,7 +16,10 @@
                 <div class="card-body">
                     <div class="info ">
                         Posted on by <a href="/viewUser/{{$post->user}}">{{$post->userr['name']}}</a> {{$post->created_at}}
-
+                    </div>
+                   
+                    <div class="info" style="float:right;">
+                        <a href="/report/{{$post->id}}">Report</a>
                     </div>
                     <div class="card mx-5 my-3">
                         <img src="{{ Storage::disk('local')->url($post->image)}}" class="card-img-top">

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h3>Users</h3>
+    <h3>Posts</h3>
     <div class="mx-auto">
         <form action="/searchedUsers" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
@@ -19,8 +19,11 @@
         </form>
         <button><a href="/admin">Posts</a></button>
     </div>
+    <br />
     <div class="row">
-        @foreach($users as $user)
+        @if(isset($details))
+
+        @foreach($details as $user)
         <div class="col-md-4 col-sm-4 col-xs-12 mx-auto my-2">
             <div class="card mx-auto shadow-sm" style="border: none; heigt: 100%;">
 
@@ -42,6 +45,7 @@
         </div>
 
         @endforeach
-        </row>
+        @endif
     </div>
-    @endsection
+</div>
+@endsection
