@@ -127,19 +127,30 @@ class postController extends Controller
     //     return view('viewMessage')->with('$oldMessages',$oldMessages);
     // }
     public function report($postId){
-//         $report = new Report;
-//         $post = Report::findorfail($postId);
+        $report = new Report;
+       
+        $post = Report::where('postId',  $postId )->first();
         
-//         $total= $post->report;
-//         $sum = $total+1;
-//        // $total->report=$sum;
-//         $report->report = $sum;
-//         $report->save();
+        if($post==null){
+            $report->postId = $postId;
+            $report->report = 1;
+            $report->save();
+           
+        }
+        if($post!=null){
+            $total = $post->report;
+            $sum = $total + 1;
+            $post->postId = $postId;
+            $post->report = $sum;
+            $post->update();
+        }
+        
+       
 
    
 
 
-// return Redirect::back();
+return Redirect::back();
 
     }
 }
