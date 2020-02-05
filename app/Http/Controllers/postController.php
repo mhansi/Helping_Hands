@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use DB;
 use App\Post;
 use App\User;
 use App\Message;
+use App\Report;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -123,5 +126,20 @@ class postController extends Controller
 
     //     return view('viewMessage')->with('$oldMessages',$oldMessages);
     // }
-    
+    public function report($postId){
+//         $report = new Report;
+//         $post = Report::findorfail($postId);
+        
+//         $total= $post->report;
+//         $sum = $total+1;
+//        // $total->report=$sum;
+//         $report->report = $sum;
+//         $report->save();
+
+   
+
+
+// return Redirect::back();
+
+    }
 }

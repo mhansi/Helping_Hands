@@ -10,5 +10,9 @@ class Post extends Model
     {
         return $this->belongsTo('App\User','user');
     }
+    public function reports()
+    {
+        return $this->hasMany('App\Report');
+    }
 
 }

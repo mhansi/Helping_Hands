@@ -9,6 +9,8 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use SebastianBergmann\Environment\Console;
+use Illuminate\Support\Facades\Input;
 
 class HomeController extends Controller
 {
@@ -85,5 +87,32 @@ class HomeController extends Controller
     public function users(){
         $users = User::all();
         return view('users')->with('users',$users);
+    }
+    public function searchedUsers(Request $request){
+       $q = $request['user'];
+       //$userr = User::find($user);
+        // $userId= $userr->id;
+
+        // $post = Post::find($userId);
+
+       // $q = Input::get('user');
+        $user = User::where('name', 'LIKE', '%' . $q . '%')->orWhere('email', 'LIKE', '%' . $q . '%')->get();
+        if (count($user) > 0)
+            return view('searchedUsers')->withDetails($user)->withQuery($q);
+        else return view('searchedUsers')->withMessage('No Details found. Try to search again !');
+
+      
+
+      // return view('searchedUsers')->with('posts',$user);
+    }
+    public function serchedPosts(Request $request){
+        $q = $request['post'];
+
+        $post= Post::where('title', 'LIKE', '%' . $q . '%')->orWhere('post', 'LIKE', '%' . $q . '%')->get();
+        if (count($post) > 0)
+            return view('searchedPosts')->withDetails($post)->withQuery($q);
+        else return view('searchedPosts')->withMessage('No Details found. Try to search again !');
+
+
     }
 }
