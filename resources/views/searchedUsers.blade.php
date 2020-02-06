@@ -21,7 +21,7 @@
     </div>
     <br />
     <div class="row">
-        @if(isset($details))
+       
 
         @foreach($details as $user)
         <div class="col-md-4 col-sm-4 col-xs-12 mx-auto my-2">

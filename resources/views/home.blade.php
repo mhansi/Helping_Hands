@@ -236,47 +236,6 @@
         </div>
     </div>
 
-
-    <div class="row">
-        <div class="col-md-12">
-            @foreach($posts as $post)
-
-            @if(Auth::id()==$post->user)
-            @if($post->type=='doHelp')
-            <div class="card" style="width: 100%; background-color:#9ac288; ">
-                <img src="{{ Storage::disk('local')->url($post->image)}}" class="card-img-top ">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $post->title }}</h5>
-                    <p class="card-text">{{ $post->post }}</p>
-                </div>
-                <a href="/edit/{{$post->id}}">edit</a>
-                <a href="/delete/{{$post->id}}">Delete</a>
-
-            </div>
-            @endif
-            </br>
-            @if($post->type!='doHelp')
-            <div class="card shadow-sm mx-auto post" style="background-color:thistle;">
-                <div class="card-body">
-                    <div class="card mx-5 my-3">
-                        <img src="{{ Storage::disk('local')->url($post->image)}}" class="card-img-top">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $post->title }}</h5>
-                        <p class="card-text">{{ $post->post }}</p>
-                    </div>
-                    <a href="/edit/{{$post->id}}">edit</a>
-                    <a href="/delete/{{$post->id}}">Delete</a>
-
-                </div>
-            </div>
-            @endif
-            <br />
-            @endif
-            @endforeach
-        </div>
-    </div>
-
 </div>
 
 @endsection

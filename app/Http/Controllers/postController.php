@@ -35,6 +35,7 @@ class postController extends Controller
        
         $post->image = $imageName;
         $post->type = $request['type'];
+        $post->report=0;
         
 
        $post->save();
@@ -53,7 +54,8 @@ class postController extends Controller
     public function showGetHelp()
     {
         $data = Post::orderBy('updated_at', 'desc')->get();
-        return view('getHelp')->with('posts', $data);
+        $data2 = Report::where('userId', Auth::user()->id)->get();
+        return view('getHelp')->with('posts', $data)->with('reports', $data2);
     }
     public function showDoHelp()
     {
@@ -126,31 +128,25 @@ class postController extends Controller
 
     //     return view('viewMessage')->with('$oldMessages',$oldMessages);
     // }
-    public function report($postId){
+    public function report(Request $request){
         $report = new Report;
+        $postId = $request['postId'];
+
+        $report->postId= $postId;
+        $userId = Auth::user()->id;
+        $report->userId=$userId;
+        $report->description=$request['description'];
+        $report->save();
        
-        $post = Report::where('postId',  $postId )->first();
+        $post = post::find($postId );
         
-        if($post==null){
-            $report->postId = $postId;
-            $report->report = 1;
-            $report->save();
-           
-        }
-        if($post!=null){
+        
             $total = $post->report;
             $sum = $total + 1;
-            $post->postId = $postId;
             $post->report = $sum;
             $post->update();
-        }
         
-       
-
-   
-
-
-return Redirect::back();
+     return Redirect::back();
 
     }
 }

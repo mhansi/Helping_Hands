@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Report;
 use App\Message;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -37,8 +38,9 @@ class HomeController extends Controller
 
         //    $data = Post::with('users')::orderBy('updated_at', 'desc')
         //          ->get();
-
+    
           $data2 = Message::orderBy('updated_at', 'desc')->get();
+       
         
         return view('home')->with('posts', $data1)->with('messages', $data2);
     }
