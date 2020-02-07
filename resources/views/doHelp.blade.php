@@ -91,9 +91,11 @@
                     <h5 class="card-title">{{ $post->title }}</h5>
                     <p class="card-text">{{ $post->post }}</p>
                     @if(Auth::id()!=$post->user)
-                    
-                    <!-- <a href="/reportPost" style="text-align:rigth;">Report</a> -->
-                    <!-- Button trigger modal -->
+
+                    @if(Auth::id()!=$post->user)
+                    @if(in_array($post->id,$reports))
+                    <a href="/unReport/{{$post->id}}">reported</a>
+                    @else
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         Report
                     </button>
@@ -123,6 +125,9 @@
                             </div>
                         </div>
                     </form>
+                    @endif
+                    @endif
+
                     @endif
                 </div>
 

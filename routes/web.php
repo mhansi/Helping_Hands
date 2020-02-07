@@ -37,3 +37,5 @@ Route::get('/users','HomeController@users')->middleware('verified');
 Route::post('/searchedUsers' , 'HomeController@searchedUsers')->middleware('verified');
 Route::post('/searchedPosts', 'HomeController@serchedPosts')->middleware('verified');
 Route::post('/reportPost','postController@report')->middleware('verified');
+route::get('/unReport/{id}','postController@unReport')->middleware('verified');
+

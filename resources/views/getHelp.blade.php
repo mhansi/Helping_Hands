@@ -26,18 +26,15 @@
                     <h5 class="card-title">{{ $post->title }}</h5>
                     <p class="card-text">{{ $post->post }}</p>
                     @if(Auth::id()!=$post->user)
-                    @foreach($reports as $report)
-
-                    @if($report->postId!=$post->id)
-                    <!-- <a href="/reportPost" style="text-align:rigth;">Report</a> -->
-                    <!-- Button trigger modal -->
-                   
+                    @if(in_array($post->id,$reports))
+                    <a href="/unReport/{{$post->id}}">reported</a>
+                    @else
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         Report
                     </button>
 
                     <!-- Modal -->
-                    <form  action="/reportPost" method="POST" enctype="multipart/form-data">
+                    <form action="/reportPost" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -61,13 +58,10 @@
                             </div>
                         </div>
                     </form>
-               
                     @endif
-                    @if($report->postId==$post->id)
-                    <a href="/unReported">reported</a>
                     @endif
-                    @endforeach
-                    @endif
+
+
                 </div>
 
             </div>
