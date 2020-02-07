@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Support\Arr;
 use DB;
 use App\Post;
 use App\User;
@@ -55,12 +55,15 @@ class postController extends Controller
     {
         $data = Post::orderBy('updated_at', 'desc')->get();
         $data2 = Report::where('userId', Auth::user()->id)->get();
-        return view('getHelp')->with('posts', $data)->with('reports', $data2);
+        $reportArr = Arr::flatten($data2->toArray());
+        return view('getHelp')->with('posts', $data)->with('reports', $reportArr);
     }
     public function showDoHelp()
     {
         $data = Post::orderBy('updated_at', 'desc')->get();
-        return view('doHelp')->with('posts', $data);
+        $data2 = Report::where('userId', Auth::user()->id)->get();
+        $reportArr = Arr::flatten($data2->toArray());
+        return view('doHelp')->with('posts', $data)->with('reports', $reportArr);
     }
     public function viewUser($user)
     {
@@ -75,7 +78,7 @@ class postController extends Controller
       $post=Post::find($postId);
       $post->delete();
 
-        return redirect('home');
+        return Redirect::back();
     }
    public function editPost($postId){
       $post=Post::find($postId);
@@ -149,4 +152,19 @@ class postController extends Controller
      return Redirect::back();
 
     }
+    public function unReport($postId){
+        $matchThese = ['postId' => $postId, 'userId' => Auth::user()->id];
+     Report::where($matchThese)->get()->each->delete();
+
+        $post = post::find($postId);
+
+
+        $total = $post->report;
+        $sum = $total - 1;
+        $post->report = $sum;
+        $post->update();
+
+        return Redirect::back();
+    }
+   
 }
