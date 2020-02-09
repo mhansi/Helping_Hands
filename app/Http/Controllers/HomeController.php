@@ -36,6 +36,10 @@ class HomeController extends Controller
         $data1 = Post::orderBy('updated_at', 'desc')
             ->get();
 
+        $user = User::find(Auth::user()->id);
+        $user->active=1;
+        $user->update();
+
         //    $data = Post::with('users')::orderBy('updated_at', 'desc')
         //          ->get();
     
@@ -116,5 +120,10 @@ class HomeController extends Controller
         else return view('searchedPosts')->withMessage('No Details found. Try to search again !');
 
 
+    }
+    public function deactivate(){
+        Auth::logout();
+        Session::flush();
+        return Redirect::to('/');
     }
 }

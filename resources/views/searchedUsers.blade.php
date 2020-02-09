@@ -21,9 +21,10 @@
     </div>
     <br />
     <div class="row">
-       
+
 
         @foreach($details as $user)
+        @if($user->active==1)
         <div class="col-md-4 col-sm-4 col-xs-12 mx-auto my-2">
             <div class="card mx-auto shadow-sm" style="border: none; heigt: 100%;">
 
@@ -43,9 +44,13 @@
                 </div>
             </div>
         </div>
+        @endif
+        @if($user->active==0)
+        <div class="alert alert-danger">This user is not longer available</div>
+        @endif
 
         @endforeach
-        @endif
+
     </div>
 </div>
 @endsection

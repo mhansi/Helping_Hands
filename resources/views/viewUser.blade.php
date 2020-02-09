@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@if($userDetails->active==1)
 <div class="container">
 
     <div class="row">
@@ -106,4 +107,8 @@
     @endforeach
 </div>
 </div>
+@endif
+@if($userDetails->active==0)
+<div class="alert alert-danger">This user is not longer available</div>
+@endif
 @endsection

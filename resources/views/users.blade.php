@@ -21,6 +21,7 @@
     </div>
     <div class="row">
         @foreach($users as $user)
+        @if($user->active==1)
         <div class="col-md-4 col-sm-4 col-xs-12 mx-auto my-2">
             <div class="card mx-auto shadow-sm" style="border: none; heigt: 100%;">
 
@@ -36,11 +37,12 @@
                     </a>
                     <!-- <h6 class="card-body text-center" ><img src="url('../images/email.jpg') !important"></h6> -->
 
-
+<a href="/deleteUser/{{$user->id}}">Delete User</a>
                 </div>
             </div>
         </div>
-
+        @endif
+       
         @endforeach
         </row>
     </div>

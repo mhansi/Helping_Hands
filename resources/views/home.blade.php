@@ -197,7 +197,7 @@
     <div class="col-md-12">
         <div class="row">
             @foreach($posts as $post)
-
+           
 
             @if($post->user==Auth::id())
 
@@ -231,7 +231,7 @@
             @endif
 
 
-
+       
             @endforeach
         </div>
     </div>

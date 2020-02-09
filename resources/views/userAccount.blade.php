@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
+    <a href="deactivate">Deactivate Account</a>
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container-fluid">
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -36,7 +37,7 @@
 
     </div>
 
-
+    @if($receiverDetails->active==1)
     <form method="post" action="{{ url('/sendEmail')}}">
         {{ csrf_field() }}
         <div class="form-group">
@@ -63,6 +64,10 @@
             <input type="submit" name="send" value="send" class="btn btn-info">
         </div>
     </form>
+    @endif
+    @if($receiverDetails->active==0)
+    <p class="alert alert-danger">You can't longer to reply these mesages</p>
+    @endif
 </div>
 
 @endsection
