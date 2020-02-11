@@ -84,6 +84,8 @@
 
 <body>
 
+
+
     <div class="flex-center position-ref full-height img " id="app">
         @if (Route::has('login'))
         <div class="top-right links">
@@ -114,7 +116,13 @@
                 </div>
             </div>
         </div>
+       
     </div>
+
+
+
+    <script src="{{ asset('js/app.js') }}">
+    </script>
 </body>
 
 </html>

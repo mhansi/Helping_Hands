@@ -32,17 +32,23 @@
                         <img src="{{ Storage::disk('local')->url($user->image)}}" class="mx-auto" style='object-fit: cover; width: 100px; height: 100px; border-radius: 50%;'>
                     </div>
                     @endif
+                    @if($user->image=='')
+                    <div class="card" style="width: 10rem;">
+
+                        <img src="../images/user.png" class="mx-auto" style='object-fit: cover; width: 100px; height: 100px; border-radius: 50%;'>
+                    </div>
+                    @endif
                     <a href="/viewUser/{{$user->id}}">
                         <h3 class="card-title text-center">{{$user->name}}</h3>
                     </a>
                     <!-- <h6 class="card-body text-center" ><img src="url('../images/email.jpg') !important"></h6> -->
 
-<a href="/deleteUser/{{$user->id}}">Delete User</a>
+                    <a href="/deleteUser/{{$user->id}}">Delete User</a>
                 </div>
             </div>
         </div>
         @endif
-       
+
         @endforeach
         </row>
     </div>

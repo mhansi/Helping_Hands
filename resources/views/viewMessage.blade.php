@@ -12,6 +12,7 @@
         </ul>
     </div>
     @endif
+    
     <h1>To {{$receiverDetails->name}}</h1>
 
 

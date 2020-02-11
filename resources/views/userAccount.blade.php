@@ -12,9 +12,16 @@
         </ul>
     </div>
     @endif
+    @if(Auth::user()->image!='')
     <div class="mx-auto " style="width: 18rem;">
         <img style="border-radius: 50%;" src="{{ Storage::disk('local')->url(Auth::user()->image)}}" class="card-img-top ">
     </div>
+    @endif
+    @if(Auth::user()->image=='')
+    <div class="mx-auto " style="width: 18rem;">
+        <img style="border-radius: 50%;" src="../images/user.png" class="card-img-top ">
+    </div>
+    @endif
     <br />
     <form action="/updateUserAccount" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}

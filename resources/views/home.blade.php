@@ -12,6 +12,11 @@
                         <img src="{{ Storage::disk('local')->url(Auth::user()->image)}}" class="mx-auto" style='object-fit: cover; width: 100px; height: 100px; border-radius: 50%;'>
                     </div>
                     @endif
+                    @if(Auth::user()->image=='')
+                    <div class="text-center">
+                        <img src="../images/user.png" class="mx-auto" style='object-fit: cover; width: 100px; height: 100px; border-radius: 50%;'>
+                    </div>
+                    @endif
                     <h3 class="card-title text-center">{{Auth::user()->name}}</h3>
                     <!-- <h6 class="card-body text-center" ><img src="url('../images/email.jpg') !important"></h6> -->
                     <div class="text-center">
@@ -48,7 +53,7 @@
                     </div>
                     @if(Auth::user()->email=='srsmsone@gmail.com')
                     <a href="/admin">Admin</a>
-                    
+
                     @endif
                 </div>
             </div>
@@ -197,7 +202,7 @@
     <div class="col-md-12">
         <div class="row">
             @foreach($posts as $post)
-           
+
 
             @if($post->user==Auth::id())
 
@@ -231,11 +236,11 @@
             @endif
 
 
-       
+
             @endforeach
         </div>
     </div>
-
+   
 </div>
 
 @endsection

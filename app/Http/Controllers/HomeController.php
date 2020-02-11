@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use SebastianBergmann\Environment\Console;
 use Illuminate\Support\Facades\Input;
+use Session;
 
 class HomeController extends Controller
 {
@@ -77,7 +78,7 @@ class HomeController extends Controller
             $imageName = $request->image->store('public');
         }
 
-        $userDetails->name = $request['name'];;
+        $userDetails->name = $request['name'];
         $userDetails->description = $request['description'];
         $userDetails->image = $imageName;
       
@@ -124,6 +125,20 @@ class HomeController extends Controller
     public function deactivate(){
         Auth::logout();
         Session::flush();
-        return Redirect::to('/');
+        return redirect('home');
+    }
+    public function deleteUser($userId){
+       $user= User::find($userId);
+       
+       Post::where('user',$userId)->delete();
+       //$post->delete()->all();
+      Message::where('receiver_id',$userId)->delete();
+       Message::where('sender_id', $userId)->delete();
+        $user->delete();
+       // $message1->delete()->all();
+        //$message2->delete()->all();
+    
+
+       return redirect('users');
     }
 }

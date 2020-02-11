@@ -51,12 +51,19 @@
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                         @endif
-                      
+
                         @else
                         <li>@if(Auth::user()->image!='')
                             <div class="card" style="width: 2rem;">
                                 <a href="{{ url('/home') }}">
                                     <img src="{{ Storage::disk('local')->url(Auth::user()->image)}}" class="card-img-top ">
+                                </a>
+                            </div>
+                            @endif
+                            @if(Auth::user()->image=='')
+                            <div class="card" style="width: 2rem;">
+                                <a href="{{ url('/home') }}">
+                                    <img src="../images/user.png" class="card-img-top ">
                                 </a>
                             </div>
                             @endif</li>

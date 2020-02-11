@@ -35,6 +35,12 @@
                         <img src="{{ Storage::disk('local')->url($user->image)}}" class="mx-auto" style='object-fit: cover; width: 100px; height: 100px; border-radius: 50%;'>
                     </div>
                     @endif
+                    @if($user->image=='')
+                    <div class="card" style="width: 10rem;">
+
+                        <img src="../images/user.png" class="mx-auto" style='object-fit: cover; width: 100px; height: 100px; border-radius: 50%;'>
+                    </div>
+                    @endif
                     <a href="/viewUser/{{$user->id}}">
                         <h3 class="card-title text-center">{{$user->name}}</h3>
                     </a>
