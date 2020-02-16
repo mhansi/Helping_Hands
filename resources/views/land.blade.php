@@ -81,36 +81,35 @@
             height: 300px;
             background-repeat: no-repeat; */
         /* } */
-        
     </style>
 </head>
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <div class="flex-center position-ref full-height img " id="app">
-        @if (Route::has('login'))
-        <div class="top-right links">
-            @auth
-            <a href="{{ url('/home') }}">Home</a>
-            @else
-            <a href="{{ route('login') }}">Login</a>
+        <div class="flex-center position-ref full-height img " id="app">
+            @if (Route::has('login'))
+            <div class="top-right links">
+                @auth
+                <a href="{{ url('/home') }}">Home</a>
+                @else
+                <a href="{{ route('login') }}">Login</a>
 
-            @if (Route::has('register'))
-            <a href="{{ route('register') }}">Register</a>
+                @if (Route::has('register'))
+                <a href="{{ route('register') }}">Register</a>
+                @endif
+                @endauth
+            </div>
             @endif
-            @endauth
+            <div>
+                <h1>IT'S NICE TO MEET YOU</h1>
+            </div>
         </div>
-        @endif
         <div>
-            <h1>IT'S NICE TO MEET YOU</h1>
-        </div>
-    </div>
-    <div >
-        <h2 >Services</h2>
+            <h2>Services</h2>
 
-    </div>
+        </div>
 
     </div>
 </body>

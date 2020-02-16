@@ -85,7 +85,7 @@
 
                     </div>
                     <div class="card mx-5 my-3">
-                        <img src="{{ Storage::disk('local')->url($post->image)}}" class="card-img-top">
+                        <img style="width: 100%; height: 40vh; object-fit: cover;" src="{{ Storage::disk('local')->url($post->image)}}" class="card-img-top">
                     </div>
 
                     <h5 class="card-title">{{ $post->title }}</h5>
