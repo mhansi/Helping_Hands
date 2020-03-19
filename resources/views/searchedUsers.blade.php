@@ -2,22 +2,22 @@
 
 @section('content')
 <div class="container">
-    <h3>Posts</h3>
+    <h3>Users</h3>
     <div class="mx-auto">
         <form action="/searchedUsers" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
-            <div class="mx-auto">
+            <div class="mx-auto row">
 
-                <div class="form-group">
+                <div class="form-group col-md-2">
                     <input name="user" type='text'>
                 </div>
-                <div class="form-group">
-                    <span><button type="submit" class="btn btn-primary mb-2"><i class="fa fa-search"></i></button></span>
+                <div class="form-group col-md-2">
+                    <span><button type="submit" class="btn btn-dark mb-2"><i class="fa fa-search"></i></button></span>
                 </div>
 
             </div>
         </form>
-        <button><a href="/admin">Posts</a></button>
+        
     </div>
     <br />
     <div class="row">

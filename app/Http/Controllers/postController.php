@@ -17,6 +17,12 @@ use Illuminate\Support\Facades\Storage;
 
 class postController extends Controller
 {
+    public function land()
+    {
+        $data = Post::orderBy('updated_at', 'desc')->paginate(6);
+            
+        return view('land')->with('posts', $data);
+    }
     public function store(Request $request)
     {
         
@@ -105,7 +111,7 @@ class postController extends Controller
         
         $messageDetails = Message::find($messageId);
         $receiverId = $messageDetails->sender_id;
-        $receiverDetails = User::find($receiverId);
+        $receiverDetails = User::findOrFail($receiverId);
 
         $receiverId2 = $messageDetails->receiver_id;
         $senderId2 = $messageDetails->sender_id;

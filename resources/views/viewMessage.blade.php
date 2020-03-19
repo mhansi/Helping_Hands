@@ -12,8 +12,9 @@
         </ul>
     </div>
     @endif
-    
-    <h1>To {{$receiverDetails->name}}</h1>
+
+    <h1>To <a style="color:black;"  href="/viewUser/{{$receiverDetails->id}}">{{$receiverDetails->name}}</a></h1>
+
 
 
     <div class="scrollable">

@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" style="background-color: #f2f3f5;">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
 
@@ -36,6 +36,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                      <h5>  <a style="color:black" href="/">Helping Hands</a></h5>
 
                     </ul>
 
@@ -99,6 +100,31 @@
                                 Do Help
                             </a>
                         </li>
+                        <li class="nav-item dropdown">
+
+                            @if(Auth::user()->email=='srsmsone@gmail.com')
+
+
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Admin<span class="caret"></span>
+                            </a>
+
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a href="/users" class="dropdown-item">Users</a>
+                                <div>
+                                    <a href="/posts" class="dropdown-item">Posts</a>
+                                </div>
+
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                   
+                        @endif
+
+                        </li>
 
                         @endguest
                     </ul>
@@ -109,7 +135,7 @@
         <main class="py-4">
 
             @yield('content')
-@extends('layouts.footer')
+            @extends('layouts.footer')
 
         </main>
     </div>

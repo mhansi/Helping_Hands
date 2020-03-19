@@ -86,7 +86,7 @@
 
 <body>
 
-    <div class="container">
+    <div>
 
         <div class="flex-center position-ref full-height img " id="app">
             @if (Route::has('login'))
@@ -112,6 +112,48 @@
         </div>
 
     </div>
+    <div style="color:black">
+        <div class="col-md-12">
+            <div class="row">
+
+                @foreach($posts as $post)
+
+                <div class="col-md-4">
+                    <div class="card shadow-sm mx-auto post h-100">
+
+                        <div class="card-body">
+                            <div class="info ">
+                                Posted on {{$post->created_at}}
+                                @if($post->type=='doHelp')
+                                <p style="color:green">to Do Help</p>
+                                @endif
+                                @if($post->type=='getHelp')
+                                <p style="color:red">to Get Help</p>
+                                @endif
+                            </div>
+                            <div class="card mx-5 my-3">
+                                <img src="{{ Storage::disk('local')->url($post->image)}}" class="card-img-top">
+                            </div>
+
+                            <h5 class="card-title">{{ $post->title }}</h5>
+                            <p class="card-text">{{ $post->post }}</p>
+                        </div>
+
+                    </div>
+
+                    </br>
+                </div>
+
+
+
+
+                @endforeach
+            </div>
+            <div class="bg-dark dark" style=""> {!! $posts->render("bg-dark") !!}</div>
+        </div>
+    </div>
+    @yield('content')
+    @extends('layouts.footer')
 </body>
 
 </html>

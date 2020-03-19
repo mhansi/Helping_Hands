@@ -5,16 +5,18 @@
     <h3>Posts</h3>
     <form action="/searchedPosts" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
-        <div class="mx-auto">
+        <div class="mx-auto row">
 
-            <div class="form-group">
+            <div class="form-group col-md-2 ">
                 <input name="post" type='text'>
             </div>
-            <span><button type="submit" class="btn btn-primary mb-2"><i class="fa fa-search"></i></button></span>
+            <div class="form-group col-md-2">
+                <span><button type="submit" class="btn btn-dark mb-2"><i class="fa fa-search"></i></button></span>
+            </div>
 
-        </div>
+            </div>
     </form>
-    <span><button><a href="/users">Users</a></button></span>
+
     <br />
     <div class="row">
 

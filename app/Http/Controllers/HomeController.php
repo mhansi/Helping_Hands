@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use DB;
 use App\Report;
 use App\Message;
 use App\User;
@@ -46,9 +47,13 @@ class HomeController extends Controller
     
           $data2 = Message::orderBy('updated_at', 'desc')->get();
        
+            
+           
+       
         
         return view('home')->with('posts', $data1)->with('messages', $data2);
     }
+   
     public function viewMessage($id)
     {
         $view = 'yes';
@@ -86,7 +91,7 @@ class HomeController extends Controller
         
         return redirect('userAccount');
      }
-    public function admin(){
+    public function posts(){
         $post = Post::orderBy('updated_at', 'desc')->get();
         return view('admin')->with('posts',$post);
     }
@@ -104,8 +109,9 @@ class HomeController extends Controller
 
        // $q = Input::get('user');
         $user = User::where('name', 'LIKE', '%' . $q . '%')->orWhere('email', 'LIKE', '%' . $q . '%')->get();
-        if (count($user) > 0)
+        if (count($user) > 0){
             return view('searchedUsers')->withDetails($user)->withQuery($q);
+        }
         else return view('searchedUsers')->withMessage('No Details found. Try to search again !');
 
       
@@ -123,6 +129,9 @@ class HomeController extends Controller
 
     }
     public function deactivate(){
+        $user =User::find(Auth::user()->id);
+        $user->active=0;
+        $user->save();
         Auth::logout();
         Session::flush();
         return redirect('home');

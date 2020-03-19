@@ -16,6 +16,11 @@
                         <img src="{{ Storage::disk('local')->url($userDetails->image)}}" style='object-fit: cover; width: 100px; height: 100px; border-radius: 50%;'>
                     </div>
                     @endif
+                    @if($userDetails->image=='')
+                    <div class="text-center">
+                        <img src="../images/user.png" class="mx-auto" style='object-fit: cover; width: 100px; height: 100px; border-radius: 50%;'>
+                    </div>
+                    @endif
                     <a href="/viewUser/{{$userDetails->id}}">
                         <h3 class="card-title text-center">{{$userDetails->name}}</h3>
                     </a>
@@ -74,38 +79,37 @@
         </div>
 
     </div>
-<div class="row">
+    <div class="row">
 
-    @foreach($posts as $post)
-    <div class="col-md-6">
-        <div class="card shadow-sm mx-auto post">
+        @foreach($posts as $post)
+        <div class="col-md-6">
+            <div class="card shadow-sm mx-auto post">
 
-            <div class="card-body">
-                <div class="info ">
-                    Posted on {{$post->created_at}}
-                    @if($post->type=='doHelp')
-                    <p style="color:green">to Do Help</p>
-                    @endif
-                    @if($post->type=='getHelp')
-                    <p style="color:red">to Get Help</p>
-                    @endif
+                <div class="card-body">
+                    <div class="info ">
+                        Posted on {{$post->created_at}}
+                        @if($post->type=='doHelp')
+                        <p style="color:green">to Do Help</p>
+                        @endif
+                        @if($post->type=='getHelp')
+                        <p style="color:red">to Get Help</p>
+                        @endif
+                    </div>
+                    <div class="card mx-5 my-3">
+                        <img src="{{ Storage::disk('local')->url($post->image)}}" class="card-img-top">
+                    </div>
+
+                    <h5 class="card-title">{{ $post->title }}</h5>
+                    <p class="card-text">{{ $post->post }}</p>
                 </div>
-                <div class="card mx-5 my-3">
-                    <img src="{{ Storage::disk('local')->url($post->image)}}" class="card-img-top">
-                </div>
+               
 
-                <h5 class="card-title">{{ $post->title }}</h5>
-                <p class="card-text">{{ $post->post }}</p>
             </div>
-            <a href="/edit/{{$post->id}}">edit</a>
-            <a href="/delete/{{$post->id}}">Delete</a>
 
+            </br>
         </div>
-
-        </br>
+        @endforeach
     </div>
-    @endforeach
-</div>
 </div>
 @endif
 @if($userDetails->active==0)

@@ -77,7 +77,7 @@
         @if('getHelp'==$post->type)
 
         <div class="col-md-4">
-            <div class="card shadow-sm mx-auto post">
+            <div class="card shadow-sm mx-auto post h-100">
 
                 <div class="card-body">
                     <div class="info ">

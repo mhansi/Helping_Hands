@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('land');
-});
+
+Route::get('/' , 'postController@land');
 
 Auth::routes(['verify' => true]);
 
@@ -32,7 +31,7 @@ Route::post('/resubmit', 'postController@resubmit')->middleware('verified');
 Route::get('/viewMessages/{messageId}', 'postController@viewMessagePanel')->middleware('verified');
 Route::get('/userAccount', 'HomeController@userAccount')->middleware('verified');
 Route::post('/updateUserAccount', 'HomeController@updateUserAccount')->middleware('verified');
-Route::get('/admin','HomeController@admin')->middleware('verified');
+Route::get('/posts','HomeController@posts')->middleware('verified');
 Route::get('/users','HomeController@users')->middleware('verified');
 Route::post('/searchedUsers' , 'HomeController@searchedUsers')->middleware('verified');
 Route::post('/searchedPosts', 'HomeController@serchedPosts')->middleware('verified');

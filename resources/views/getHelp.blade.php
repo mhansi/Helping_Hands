@@ -11,7 +11,7 @@
         @if('doHelp'==$post->type)
 
         <div class="col-md-4">
-            <div class="card shadow-sm mx-auto post">
+            <div class="card shadow-sm mx-auto post h-100">
 
                 <div class="card-body">
                     <div class="info ">
@@ -20,8 +20,12 @@
 
 
                     <div class="card mx-5 my-3">
-                        <img style="width: 100%; height: 15vw; object-fit: cover;" src="{{ Storage::disk('local')->url($post->image)}}" class="card-img-top">
+                        <img style="width: 100%;  object-fit: cover;" src="{{ Storage::disk('local')->url($post->image)}}" class="card-img-top">
+
                     </div>
+
+
+
 
                     <h5 class="card-title">{{ $post->title }}</h5>
                     <p class="card-text">{{ $post->post }}</p>
@@ -29,7 +33,7 @@
                     @if(in_array($post->id,$reports))
                     <a href="/unReport/{{$post->id}}">reported</a>
                     @else
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal">
                         Report
                     </button>
 
@@ -48,6 +52,7 @@
                                     </div>
                                     <input type="text" name="description" class="modal-body">
                                     <input type="hidden" name="postId" value={{$post->id}}>
+
 
 
                                     <div class="modal-footer">

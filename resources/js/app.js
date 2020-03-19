@@ -21,7 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('type-effect', require('./components/TypeEffect.vue').default);
-
+Vue.component('slider' , require('./components/Slider.vue').default);
 
 
 /**

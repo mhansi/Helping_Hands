@@ -5,24 +5,24 @@
     <h3>Posts</h3>
     <form action="/searchedPosts" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
-        <div class="mx-auto">
+        <div class="mx-auto row">
 
-            <div class="form-group">
+            <div class="form-group col-md-2">
                 <input name="post" type='text'>
             </div>
-            <div class="form-group">
-                <span><button type="submit" class="btn btn-primary mb-2"><i class="fa fa-search"></i></button></span>
+            <div class="form-group col-md-2">
+                <span><button type="submit" class="btn btn-dark mb-2"><i class="fa fa-search"></i></button></span>
             </div>
 
         </div>
     </form>
-    <span><button><a href="/users">Users</a></button></span>
+
 
     <br />
     <div class="row">
         @foreach($posts as $post)
         <div class="col-md-4">
-            <div class="card shadow-sm mx-auto post">
+            <div class="card shadow-sm mx-auto post h-100">
 
                 <div class="card-body">
                     <div class="info ">
@@ -36,9 +36,9 @@
                     <h5 class="card-title">{{ $post->title }}</h5>
                     <p class="card-text">{{ $post->post }}</p>
                 </div>
-                <h6>{{$post->report}}</h6>
+                <h6 style="color:red; text-align:center;">{{$post->report}} people have reported</h6>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
                     Delete
                 </button>
 
@@ -53,7 +53,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                               Do you want to delete this post
+                                Do you want to delete this post
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>

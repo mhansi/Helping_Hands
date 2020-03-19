@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
+
     <div class="row mx-auto">
         <div class="col-md-4 col-sm-4 col-xs-12 mx-auto my-2">
             <div class="card mx-auto shadow-sm" style="border: none; heigt: 100%;">
@@ -18,6 +20,8 @@
                     </div>
                     @endif
                     <h3 class="card-title text-center">{{Auth::user()->name}}</h3>
+
+
                     <!-- <h6 class="card-body text-center" ><img src="url('../images/email.jpg') !important"></h6> -->
                     <div class="text-center">
                         <div class="dropdown">
@@ -51,10 +55,7 @@
                         </div>
 
                     </div>
-                    @if(Auth::user()->email=='srsmsone@gmail.com')
-                    <a href="/admin">Admin</a>
 
-                    @endif
                 </div>
             </div>
         </div>
@@ -90,7 +91,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                    <button type="submit" class="btn btn-dark mb-2">Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -206,12 +207,14 @@
 
             @if($post->user==Auth::id())
 
-            <div class="col-md-6">
-                <div class="card shadow-sm mx-auto post">
+            <div class="col-md-4">
+                <div class="card shadow-sm mx-auto post h-100">
 
                     <div class="card-body">
                         <div class="info ">
-                            Posted on {{$post->created_at}}
+                            Posted on {{$post->created_at}} &nbsp; &nbsp; &nbsp; &nbsp;
+                            <a href="/edit/{{$post->id}}">Edit</a> &nbsp; &nbsp;
+                            <a style="color:red" href="/delete/{{$post->id}}">Delete</a>
                             @if($post->type=='doHelp')
                             <p style="color:green">to Do Help</p>
                             @endif
@@ -226,8 +229,7 @@
                         <h5 class="card-title">{{ $post->title }}</h5>
                         <p class="card-text">{{ $post->post }}</p>
                     </div>
-                    <a href="/edit/{{$post->id}}">edit</a>
-                    <a href="/delete/{{$post->id}}">Delete</a>
+
 
                 </div>
 
@@ -240,7 +242,7 @@
             @endforeach
         </div>
     </div>
-   
+
 </div>
 
 @endsection
