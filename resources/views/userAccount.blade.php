@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
+    <h3>Update your account</h3>
     @if(Auth::user()->email!='srsmsone@gmail.com')
     <h6 style="text-align: right;" data-toggle="modal" data-target="#exampleModal"><a href="#">Deactivate Account</a> </h6>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -14,7 +15,7 @@
                     </button>
 
                 </div>
-                <div>You can activate this account from loggin with it again. Thought you account will be deleted you post will remain.</div>
+                <div>You can activate this account from loggin with it again. Thought you account will be deleted your post will remain.</div>
 
 
 

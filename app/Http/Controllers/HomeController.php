@@ -41,16 +41,7 @@ class HomeController extends Controller
         $user = User::find(Auth::user()->id);
         $user->active=1;
         $user->update();
-
-        //    $data = Post::with('users')::orderBy('updated_at', 'desc')
-        //          ->get();
-    
           $data2 = Message::orderBy('updated_at', 'desc')->get();
-       
-            
-           
-       
-        
         return view('home')->with('posts', $data1)->with('messages', $data2);
     }
    

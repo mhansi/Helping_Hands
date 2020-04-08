@@ -35,10 +35,7 @@
                                 @if(Auth::id()==$message->receiver_id)
                                 @if($message->view=='no')
                                 <a class="dropdown-item " style="background-color:#d4bcba" href="/viewMessage/{{$message->id}}">
-
-
                                     <p>{{$message->message}}</p>
-                                    <!-- <a href='#'>{{$message->id}}</a> -->
                                 </a>
                                 @endif
                                 @if($message->view=='yes')
@@ -47,7 +44,6 @@
                                     <p>{{$message->message}}</p>
                                 </a>
                                 @endif
-
                                 @endif
                                 @endforeach
                             </div>
@@ -224,7 +220,26 @@
                         <div class="info ">
                             Posted on {{$post->created_at}} &nbsp; &nbsp; &nbsp; &nbsp;
                             <a href="/edit/{{$post->id}}">Edit</a> &nbsp; &nbsp;
-                            <a style="color:red" href="/delete/{{$post->id}}">Delete</a>
+                            <a data-toggle="modal" data-target="#exampleModal" style="color:red" href="#">Delete</a>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Do you want to delete this post?</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+
+                                        </div>
+
+
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-secondary"><a href="/delete/{{$post->id}}">Delete</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             @if($post->type=='doHelp')
                             <p style="color:green">to Do Help</p>
                             @endif
