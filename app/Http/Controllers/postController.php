@@ -25,6 +25,14 @@ class postController extends Controller
     }
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required|max:25',
+            'post' => 'required',
+            'type'=> 'required|in:doHelp,getHelp',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+
+        ]);
+
         
 
         $post = new Post;
@@ -138,6 +146,12 @@ class postController extends Controller
     //     return view('viewMessage')->with('$oldMessages',$oldMessages);
     // }
     public function report(Request $request){
+        $this->validate($request, [
+           
+            'description' => 'required',
+         
+
+        ]);
         $report = new Report;
         $postId = $request['postId'];
 

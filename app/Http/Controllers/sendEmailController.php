@@ -13,7 +13,7 @@ class sendEmailController extends Controller
         $this->validate($request,[
             
             
-            'message' => 'required|max:200'
+            'message' => 'required'
         ]);
         $messages = new Message;
         $email=$request->email;

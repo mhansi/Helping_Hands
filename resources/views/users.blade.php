@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <h3 class="col-md-1">Users</h3>
-       
+
     </div>
     <div class="mx-auto">
         <form action="/searchedUsers" method="POST" enctype="multipart/form-data">
@@ -20,7 +20,7 @@
 
             </div>
         </form>
-       
+
     </div>
     <div class="row">
         @foreach($users as $user)
@@ -30,13 +30,13 @@
 
                 <div class="card-body">
                     @if($user->image!='')
-                    <div class="card" style="width: 10rem;">
+                    <div class="text-center" >
 
                         <img src="{{ Storage::disk('local')->url($user->image)}}" class="mx-auto" style='object-fit: cover; width: 100px; height: 100px; border-radius: 50%;'>
                     </div>
                     @endif
                     @if($user->image=='')
-                    <div class="card" style="width: 10rem;">
+                    <div class="text-center" >
 
                         <img src="../images/user.png" class="mx-auto" style='object-fit: cover; width: 100px; height: 100px; border-radius: 50%;'>
                     </div>

@@ -34,7 +34,7 @@
                                 @foreach($messages as $message)
                                 @if(Auth::id()==$message->receiver_id)
                                 @if($message->view=='no')
-                                <a class="dropdown-item " style="background-color:red" href="/viewMessage/{{$message->id}}">
+                                <a class="dropdown-item " style="background-color:#d4bcba" href="/viewMessage/{{$message->id}}">
 
 
                                     <p>{{$message->message}}</p>
@@ -60,7 +60,17 @@
             </div>
         </div>
         <div class="col-md-8 col-sm-8 col-xs-12 mx-auto my-2">
+
             <div class="card mx-auto shadow-sm" style="border: none;">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                 <div class="card-body">
                     <div class="card-title">
                         <h3 class="text-center my-2">Add your post</h3>

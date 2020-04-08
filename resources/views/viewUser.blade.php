@@ -4,26 +4,30 @@
 @if($userDetails->active==1)
 <div class="container">
 
-    <div class="row">
+    <div class="row ">
 
         <div class="col-md-4 col-sm-4 col-xs-12 mx-auto my-2">
             <div class="card mx-auto shadow-sm" style="border: none; heigt: 100%;">
 
                 <div class="card-body">
                     @if($userDetails->image!='')
-                    <div class="mx-auto" style="width: 10rem; ">
+                    <div class="text-center mx-auto" style="width: 10rem; ">
 
-                        <img src="{{ Storage::disk('local')->url($userDetails->image)}}" style='object-fit: cover; width: 100px; height: 100px; border-radius: 50%;'>
+                        <img src="{{ Storage::disk('local')->url($userDetails->image)}}" class="mx-auto" style='object-fit: cover; width: 100px; height: 100px; border-radius: 50%;'>
                     </div>
                     @endif
                     @if($userDetails->image=='')
-                    <div class="text-center">
+                    <div class="text-center ">
                         <img src="../images/user.png" class="mx-auto" style='object-fit: cover; width: 100px; height: 100px; border-radius: 50%;'>
                     </div>
                     @endif
                     <a href="/viewUser/{{$userDetails->id}}">
                         <h3 class="card-title text-center">{{$userDetails->name}}</h3>
+
                     </a>
+                    @if($userDetails->description!='')
+                    <h6 class="card-title text-center">{{$userDetails->description}}</h6>
+                    @endif
                     <!-- <h6 class="card-body text-center" ><img src="url('../images/email.jpg') !important"></h6> -->
 
 
@@ -71,7 +75,7 @@
                         <textarea name="message" class="form-control" placeholder="Write Your Message Here"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="submit" name="send" value="send" class="btn btn-info">
+                        <input type="submit" name="send" value="send" class="btn btn-dark">
                     </div>
                 </form>
                 @endif
@@ -102,7 +106,7 @@
                     <h5 class="card-title">{{ $post->title }}</h5>
                     <p class="card-text">{{ $post->post }}</p>
                 </div>
-               
+
 
             </div>
 

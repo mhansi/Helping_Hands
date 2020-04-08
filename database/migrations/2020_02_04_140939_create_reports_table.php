@@ -17,7 +17,7 @@ class CreateReportsTable extends Migration
             $table->bigIncrements('id');
             $table->string('postId');
             $table->string('userId');
-            $table->string('description');
+            $table->longText('description');
             $table->timestamps();
         });
     }

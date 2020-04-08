@@ -69,7 +69,7 @@ class HomeController extends Controller
      public function updateUserAccount(Request $request){
         $this->validate($request, [
             'name' => 'required|max:15',
-            'description'=>'required|max:100',
+            'description'=>'required',
             'image'=>'required'
 
             ]);

@@ -149,7 +149,7 @@
 
                 @endforeach
             </div>
-            <div class="bg-dark dark" style=""> {!! $posts->render("bg-dark") !!}</div>
+            <div class="bg-dark dark" style=""> {!! $posts->render() !!}</div>
         </div>
     </div>
     @yield('content')
